@@ -14,3 +14,31 @@ Part 1
 Part 2
   - Due to the additional constraints added, for part 2, program should run as follows ./part2 BACKING_STORE.bin addresses.txt strategy
   - Strategy can be fifo (First In First Out) or lru (Least Recently Used). As above, the name of the output file should be correct.txt, and has the same output format as part 1. 
+
+### 1.1 Compile and Run
+
+a/ To run the program in folder part1:
+
+make
+./part1 BACKING_STORE.bin addresses.txt 
+
+Then the output will be in the correct.txt
+
+run ./part1.out BACKING_STORE.bin addresses.txt for having output in correct.txt
+
+b/ To run the program in folder part2:
+
+make
+./part2 BACKING_STORE.bin addresses.txt fifo
+
+or 
+
+make
+./part2 BACKING_STORE.bin addresses.txt lru
+
+Then the output will be in the correct.txt
+
+run ./part2 BACKING_STORE.bin addresses.txt lru 
+or   ./part2 BACKING_STORE.bin addresses.txt fifo for having output in correct.txt
+
+Check the differ between 2 files with: diff correct.txt correct2.txt
