@@ -44,11 +44,6 @@ FILE *address_file;
 FILE *backing_store;
 FILE *output;
 
-// input file and backing store
-FILE *address_file;
-FILE *backing_store;
-FILE *output;
-
 // how we store reads from input file
 char address[address_size];
 int  logicalAddress;
