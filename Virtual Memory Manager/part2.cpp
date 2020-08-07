@@ -1,18 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <unistd.h>
-#include <string.h>
+#include <iostream>
+#include <string>
 #include <alloca.h>
 #include <math.h>
 
-#define FRAME_SIZE 			256         // size of the frame
-#define NUMBER_OF_FRAMES 	128  	    // total number of frames in physical memory
-#define address_size         12 	    // number of characters to read for each line from input file
-#define page_size           256 	    // number of bytes to read
+#define FRAME_SIZE 256         // size of the frame
+#define NUMBER_OF_FRAMES 128  	    // total number of frames in physical memory
+#define address_size 12 	    // number of characters to read for each line from input file
+#define page_size 256 	    // number of bytes to read
 
-#define TLB_SIZE 			 16         // size of the TLB
-#define PAGE_TABLE_SIZE 	256  	    // size of the page table
+#define TLB_SIZE 16         // size of the TLB
+#define PAGE_TABLE_SIZE 256  	    // size of the page table
+
+using namespace std; 
 
 int pageTableIndex[PAGE_TABLE_SIZE];    // array to hold the page numbers in the page table
 int pageTableFrames[PAGE_TABLE_SIZE];   // array to hold the frame numbers in the page table
@@ -136,7 +135,7 @@ void getPage(int logicalAddress){
     countTime++;
     timer[frameNumber] = countTime;
     
-    fprintf(output,"Virtual address: %d Physical address: %d Value: %d\n", logicalAddress, (frameNumber << 8) | offset, value);
+    cout << output << "Virtual address: " << logicalAddress << "Physical address: " << (frameNumber << 8) | offset) << "Value: " << (frameNumber << 8) | value) << endl;
 
 }
 
@@ -244,7 +243,7 @@ int main(int argc, char *argv[])
     }
 
     if (  strcmp(argv[3], "lru") && strcmp(argv[3], "fifo") ){
-        printf(" Invalid Input for strategy. Choose between {fifo or lru} \n");
+        cout << " Invalid Input for strategy. Choose between {fifo or lru} \n" << endl;
         return -1;
     }
 
@@ -275,15 +274,15 @@ int main(int argc, char *argv[])
     }
 
     // calculate and print out the stats
-    fprintf(output,"Number of Translated Addresses = %d\n", numberOfTranslatedAddresses);
+    cout << output << "Number of Translated Addresses = " << numberOfTranslatedAddresses << endl;
     double pfRate = pageFaults / (double)numberOfTranslatedAddresses;
     double TLBRate = TLBHits / (double)numberOfTranslatedAddresses;
     
     //printf("Page Faults = %d\n", pageFaults);
-    fprintf(output,"Page Faults = %d\n", pageFaults);
-    fprintf(output,"Page Fault Rate = %.3f\n",pfRate);
-    fprintf(output,"TLB Hits = %d\n", TLBHits);
-    fprintf(output,"TLB Hit Rate = %.3f\n", TLBRate);
+    cout << output << "Page Faults = " << pageFaults << endl;
+    cout << output << "Page Fault Rate = " << pfRate << endl;
+    fprintf << output << "TLB Hits = " << TLBHits << endl;
+    fprintf << output << "TLB Hit Rate = " << TLBRate << endl;
     
     // close the input file and backing store
     fclose(address_file);
